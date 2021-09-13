@@ -25,7 +25,7 @@
 
 <h3>Meredith's Top Picks</h3>
 
-<table class="table table-bordered table-striped">
+<table id="taskTable" class="table table-bordered table-striped">
     <tr>
         <th>Title</th>
         <th>Author(s)</th>   
@@ -117,6 +117,12 @@
 <button type="button" id="btn">Submit</button>
 
 </main>
+
+<script src="js/tablesort.min.js"></script>
+<!--Tablesort plugged in from http://tristen.ca/tablesort/demo/!-->
+<script>
+    new Tablesort(document.getElementById('taskTable'));
+  </script>
 
 </body>
 
