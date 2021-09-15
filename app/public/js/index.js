@@ -1,12 +1,33 @@
-const Offer = {
+const someApp = {
     data() {
       return {
-        foo: 0,
-        msg:"D&S is my favorite class",
-        list: ["red","green","blue"]
+        result: {},
+          list:[0,1,2],
+          message:"Waiting..."
       }
-    }
+    },
+
+
+      created() {
+        fetch('https://randomuser.me/api')
+        
+        .then( 
+          function(response) {
+            return response.json()
+          })
+
+          .then((json) => {
+              console.log(json);
+              this.result = json.results[0];
+
+          })
+
+        .catch( (error) =>{
+          console.error(error);
+
+        });
+
+      } 
   }
   
-  Vue.createApp(Offer).mount('#offerApp')
-
+  Vue.createApp(someApp).mount('#someApp');
