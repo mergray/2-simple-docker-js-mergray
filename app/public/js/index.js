@@ -7,8 +7,18 @@ const someApp = {
       }
     },
 
+    computed: {
+      Birthday() {
+       return dayjs(this.result.dob.date)
+       .format('D MMM YYYY')
+    
+      }
 
-      created() {
+    },
+
+    methods:{ 
+      fetchUserData(){
+        
         fetch('https://randomuser.me/api')
         
         .then( 
@@ -26,6 +36,15 @@ const someApp = {
           console.error(error);
 
         });
+        
+
+      }
+
+    },
+
+      created() {
+       
+        this.fetchUserData();
 
       } 
   }

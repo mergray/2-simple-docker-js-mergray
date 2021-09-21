@@ -64,6 +64,8 @@
             <p>{{result.name.first}}</p>
             <p>{{result.name.last}}</p>
             <p>{{result.country}}</p>
+            <p>{{result.dob.date}}</p>
+            <p>{{prettyBirthday}}</p>
             <p><a v-bind:href=" 'mailto:' + result.email">{{ result.email }}</p>
    
            </div>
@@ -74,6 +76,7 @@
 
 <script src="js/tablesort.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<script src="path/to/dayjs/dayjs.min.js"></script>
 <script src="js/index.js"></script>
 </body>
 

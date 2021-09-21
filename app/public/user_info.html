@@ -28,30 +28,38 @@
 
 <p>Learn a little more about Meredith.</p>
 
+<div id="someApp">
+
+  <form v-on:submit.prevent="fetchUserData">
+    <button type="submit">Refresh</button>
+  </form>
+
+
 <h3>Personal Information</h3>
+<p>
+
   <ul> 
-    <li><strong>Name:</strong> Meredith Grey</li>   
-    <li><strong>Country or Origin:</strong> United States of America</li>   
-    <li><strong>Birthdate:</strong> 11/10/69 </li>   
-    <li><strong>Age:</strong> 51 </li>      
+    <li><strong>First Name:</strong> {{result.name.first}}</li>   
+    <li><strong>Last Name:</strong> {{result.name.last}}</li>   
+    <li><strong>Country or Origin:</strong> {{result.location.country}}</li>   
+    <li><strong>Birthdate:</strong> {{result.dob.date}}</li>   
+    <li><strong>Age:</strong> {{result.dob.age}}</li>     
   </ul>
+</p>
 
   <h3>Contact Me via Email</h3>
-
-  <a href="mailto:meredithgrey@gmail.com"> meredithgrey@gmail.com</a>
+  <a v-bind:href=" 'mailto:' + result.email">{{ result.email }} </a> 
+  
   <br>
-  <br>
+  
+  <a v-bind:href='result.picture.large'><img v-bind:src='result.picture.large'></a>
 
-  <a href="https://i.pinimg.com/originals/d0/fd/de/d0fddeee7e7df30a57471fc026d7772b.jpg">
-    <img src="https://i.pinimg.com/originals/d0/fd/de/d0fddeee7e7df30a57471fc026d7772b.jpg" alt="headshot" class="thumbnail" height="200" width="200"
-    />
-  </a>
-
-  <p>Click the image to enlarge.</p>
+</div>
 
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<script src="path/to/dayjs/dayjs.min.js"></script>
 <script src="js/index.js"></script>
 
 </body>
