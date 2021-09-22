@@ -42,7 +42,7 @@
     <li><strong>First Name:</strong> {{result.name.first}}</li>   
     <li><strong>Last Name:</strong> {{result.name.last}}</li>   
     <li><strong>Country or Origin:</strong> {{result.location.country}}</li>   
-    <li><strong>Birthdate:</strong> {{result.dob.date}}</li>   
+    <li><strong>Birthdate:</strong> {{ prettyBirthday }}</li>   
     <li><strong>Age:</strong> {{result.dob.age}}</li>     
   </ul>
 </p>
@@ -61,6 +61,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 <script src="path/to/dayjs/dayjs.min.js"></script>
 <script src="js/index.js"></script>
+<script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
 
 </body>
 
