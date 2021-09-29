@@ -38,6 +38,7 @@
 <h3>Personal Information</h3>
 <p>
 
+<div v-if="result">
   <ul> 
     <li><strong>First Name:</strong> {{result.name.first}}</li>   
     <li><strong>Last Name:</strong> {{result.name.last}}</li>   
@@ -50,6 +51,7 @@
   <h3>Contact Me via Email</h3>
   <a v-bind:href=" 'mailto:' + result.email">{{ result.email }} </a> 
   
+</div>
   <br>
   
   <a v-bind:href='result.picture.large'><img v-bind:src='result.picture.large'></a>

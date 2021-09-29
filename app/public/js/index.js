@@ -1,7 +1,7 @@
 const someApp = {
     data() {
       return {
-        result: {},
+        result: undefined,
           list:[0,1,2],
           message:"Waiting..."
       }
