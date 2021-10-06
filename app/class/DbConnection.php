@@ -32,8 +32,3 @@ class DbConnection
       return self::$connection;
     }
 }
-
-try{
-
-    
-}
