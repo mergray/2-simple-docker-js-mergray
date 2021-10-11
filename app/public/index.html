@@ -69,7 +69,68 @@
             <p><a v-bind:href=" 'mailto:' + result.email">{{ result.email }}</p>
    
            </div>
-         
+
+           <div v-for="s in students" v-on:click="selectStudent(s)"
+           :class="['student', {selected: selectedStudent && s.id == selectedStudent.id}}">
+          <span class="userName">{{ s.username }}</span><br>
+          <span class="studentName">{{ s.name }}</span>
+          </div>
+
+          <div class="col col-8" v-if="selectedStudent">
+            <h1>Offers for {{ selectedStudent.name }}</h1>
+          
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Salary</th>
+                <th>Bonus</th>
+                <th>Offer Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+              <tbody>
+                  <tr v-for="offer in offers">
+                      <td>{{ offer.companyName }}</td>
+                      <td>{{ prettyDollar(offer.salary) }}</td>
+                      <td>{{ prettyDollar(offer.bonus) }}</td>
+                      <td>{{ offer.offerDate }}</td>
+                  </tr>
+              </tbody>
+          </table>
+
+          <div class="noOffers" v-if="! offers.length">
+            <h3>No offers. 😥</h3>
+          </div>
+
+        </div>
+          </div>
+    
+          <form v-on:submit.prevent="postNewOffer">
+
+            <div class="mb-3">
+            <label for="companyname">Company Name:</label><br>
+            <input type="text" v-model="offerForm.company name" id="companyname" name="companyname"><br>
+           </div>
+
+           <div class="mb-3">
+            <label for="salary">Salary:</label><br>
+            <input type="number" v-model="offerForm.salary" id="salary" name="salary"><br>
+          </div>
+
+          <div class="mb-3">
+            <label for="bonus">Bonus:</label><br>
+            <input type="number" v-model="offerForm.bonus" id="bonus" name="bonus"><br>
+          </div>
+
+          <div class="mb-3">
+            <label for="offerdate">Offer Date:</label><br>
+            <input type="date" v-model="offerForm.offerdate" id="offerdate" name="offerdate"><br>
+          </div>
+
+            <button type="button">Submit</button>
+
+          </form>
 
 </main>
 

@@ -2,8 +2,10 @@ const someApp = {
     data() {
       return {
         result: undefined,
-          list:[0,1,2],
-          message:"Waiting..."
+         students: [],
+         selectedStudent: null,
+         offers: [],
+         offerForm{},
       }
     },
 
@@ -32,8 +34,43 @@ const someApp = {
 
           })
 
-        .catch( (error) =>{
-          console.error(error);
+          selectStudent(s) {
+            if (s==this.selectedStudemt) {
+              return;
+            }
+            this.selectedStudent = s;
+            this.offers= [];
+            this.fetchOfferData(this.selectedStudent);
+          },
+
+          fetchStudentData() {
+            fetch('api/student/')
+            .then( response => response.json() )
+            .then( (responseJson) =>) {
+              console.log(responseJson);
+              this.offers = responseJson;
+      
+            })
+
+            .catch( (err) => {
+              console.error(err);
+            })
+          }
+
+          fetchOfferData(s) {
+            console.log("Fetching offer data for ", s)
+            fetch('api/student/')
+            .then( response => response.json() )
+            .then( (responseJson) =>) {
+              console.log(responseJson);
+              this.offers = responseJson;
+      
+            })
+
+            .catch( (err) => {
+              console.error(err);
+            })
+          }
 
         });
         
@@ -41,6 +78,13 @@ const someApp = {
       }
 
     },
+
+    postNewOffer(evt) {
+      this.offerForm.studentId= this.selectedStudent.studentId;
+      console.log("Posting:", this.offerForm);
+      
+      alert("Posting!");
+    }
 
       created() {
        
