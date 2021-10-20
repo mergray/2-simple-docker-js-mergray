@@ -59,53 +59,6 @@
           share that joy through her spirit of discovery and of possibility and of hope, right in the face
           of darkness.-Jackson Avery</q>
           
-          <!-- <div id="offerApp">
-
-            <p>{{result.name.first}}</p>
-            <p>{{result.name.last}}</p>
-            <p>{{result.country}}</p>
-            <p>{{result.dob.date}}</p>
-            <p>{{prettyBirthday}}</p>
-            <p><a v-bind:href=" 'mailto:' + result.email">{{ result.email }}</p>
-   
-          
-
-           <div v-for="s in students" v-on:click="selectStudent(s)"
-           :class="['student', {selected: selectedStudent && s.id == selectedStudent.id}}">
-          <span class="userName">{{ s.username }}</span><br>
-          <span class="studentName">{{ s.name }}</span>
-          </div>
-
-          <div class="col col-8" v-if="selectedStudent">
-            <h1>Offers for {{ selectedStudent.name }}</h1>
-          
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Company</th>
-                <th>Salary</th>
-                <th>Bonus</th>
-                <th>Offer Date</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-              <tbody>
-                  <tr v-for="offer in offers">
-                      <td>{{ offer.companyName }}</td>
-                      <td>{{ prettyDollar(offer.salary) }}</td>
-                      <td>{{ prettyDollar(offer.bonus) }}</td>
-                      <td>{{ offer.offerDate }}</td>
-                  </tr>
-              </tbody>
-          </table>
-
-          <div class="noOffers" v-if="! offers.length">
-            <h3>No offers. 😥</h3>
-          </div>
-
-        </div>
-          </div> -->
-
           
     <div  id="offerApp" class="container">
       <div class="row align-items-start">
@@ -138,6 +91,11 @@
                     <td>{{ offer.bonus }}</td>
                     <td>{{ offer.offerDate }}</td>
                     <td></td>
+                    <td>
+                      <button type="button" class="btn btn-outline-secondary btn-sm"
+                      v-on:click="selectOffer(offer)">Edit</button>
+                      <button type="button" class="btn btn-outline-secondary btn-sm">Delete</button>
+                    </td>
                 </tr>
             </tbody>
           </table>
@@ -148,6 +106,8 @@
         </div>
       </div>
   </div>
+
+  <h3>{{ selectedOffer === null ? "Add" : "Edit" }}Add Offer</h3>
     
           <form v-on:submit.prevent="postNewOffer">
 
@@ -171,8 +131,11 @@
             <input type="date" v-model="offerForm.offerdate" id="offerDate" name="offerDate"><br>
           </div>
 
-            <button type="button">Submit</button>
-
+            <button type="button">{{ selectedOffer === null ? "Add" : "Edit" }} Offer</button>
+            <button type="button" class="btn btn-outline-secondary" 
+            v-if="selectedOffer"
+            v-on:click="resetOfferForm">Cancel</button>
+          
           </form>
         </div>
 </main>

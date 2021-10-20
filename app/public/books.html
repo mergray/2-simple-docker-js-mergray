@@ -48,33 +48,34 @@
         </tr>
     
     </table> 
-</div>
-
+{{offerForm}}
 <br>
 <h3>Recommend Meredith's Next Read</h3>
-<form>
+<form v-on:submit.prevent="postNewOffer">
 
     <label for="title">Title:</label>
-    <input type="text" id="title" name="title"><br>
+    <input type="text" id="title" name="title"  v-model="offerForm.title"><br>
 
     <label for="author">Author(s):</label>
-    <input type="text" id="author" name="author"><br>
+    <input type="text" id="author" name="author"  v-model="offerForm.author"><br>
 
     <label for="year_published">Year Published:</label>
-    <input type="number" id="year_published" name="year_published"><br>
+    <input type="number" id="year_published" name="year_published"  v-model="offerForm.yearPublished"><br>
 
     <label for="publisher">Publisher:</label>
-    <input type="text" id="publisher" name="publisher"><br>
+    <input type="text" id="publisher" name="publisher"  v-model="offerForm.publisher"><br>
 
     <label for="page_count">Page Count:</label>
-    <input type="number" id="page_count" name="page_count"><br>
+    <input type="number" id="page_count" name="page_count"  v-model="offerForm.pageCount"><br>
 
     <label for="msrp">MSRP:</label>
-    <input type="number" id="msrp" name="msrp"><br>
+    <input type="number" id="msrp" name="msrp"  v-model="offerForm.MSRP"><br>
+
+    <input type="submit" value="Submit">
 
 </form>
 
-<button type="button" id="btn">Submit</button>
+
 
 </main>
 
