@@ -45,13 +45,19 @@
             <td>{{ book.publisher }}</td>
             <td>{{ book.pageCount }}</td>
             <td>{{ book.MSRP}}</td>
+            <td>
+                <button type="button" class="btn btn-outline-secondary btn-sm"
+                  v-on:click="selectOffer(book)">Edit</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm"
+                  v-on:click="postDeleteOffer(book)">Delete</button>
+              </td>
         </tr>
     
     </table> 
-{{offerForm}}
+    <h3>{{ selectedOffer === null ? "Add" : "Edit" }} Offer</h3>
 <br>
-<h3>Recommend Meredith's Next Read</h3>
-<form v-on:submit.prevent="postNewOffer">
+
+<form v-on:submit.prevent="postOffer">
 
     <label for="title">Title:</label>
     <input type="text" id="title" name="title"  v-model="offerForm.title"><br>
@@ -72,6 +78,7 @@
     <input type="number" id="msrp" name="msrp"  v-model="offerForm.MSRP"><br>
 
     <input type="submit" value="Submit">
+
 
 </form>
 
